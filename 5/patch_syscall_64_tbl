@@ -1,0 +1,10 @@
+--- linux-4.7.1/arch/x86/entry/syscalls/syscall_64.tbl	2016-08-16 09:35:15.000000000 +0200
++++ linux-4.7.1.new/arch/x86/entry/syscalls/syscall_64.tbl	2020-10-24 22:53:56.081534533 +0200
+@@ -335,6 +335,7 @@
+ 326	common	copy_file_range		sys_copy_file_range
+ 327	64	preadv2			sys_preadv2
+ 328	64	pwritev2		sys_pwritev2
++329 64  getinfoproc     sys_getinfoproc
+ 
+ #
+ # x32-specific system call numbers start at 512 to avoid cache impact

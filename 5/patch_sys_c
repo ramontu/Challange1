@@ -1,0 +1,19 @@
+--- linux-4.7.1/kernel/sys.c	2016-08-16 09:35:15.000000000 +0200
++++ linux-4.7.1.new/kernel/sys.c	2020-10-25 11:37:57.609490000 +0100
+@@ -2433,3 +2433,15 @@
+ 	return 0;
+ }
+ #endif /* CONFIG_COMPAT */
++
++SYSCALL_DEFINE3 (getinfoproc, int, pid_t, int, pid, long*, test) {
++	
++	struct task_struct * task;
++	task = pid_task (find_get_pid(pid), PIDTYPE_PID);
++
++	long start_time = task->start_time;
++	long utime = task->utime;
++
++	copy_to_user(test, &start_time, sizeof(start_time));
++	
++}
+\ No hay ningún carácter de nueva línea al final del archivo

@@ -1,0 +1,9 @@
+--- linux-4.7.1/include/linux/syscalls.h	2016-08-16 09:35:15.000000000 +0200
++++ linux-4.7.1.new/include/linux/syscalls.h	2020-10-25 11:14:26.597490000 +0100
+@@ -898,4 +898,6 @@
+ 
+ asmlinkage long sys_mlock2(unsigned long start, size_t len, int flags);
+ 
++asmlinkage long sys_getinfoproc (int pid_t, int pid, long* test);
++
+ #endif
