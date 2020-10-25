@@ -1,0 +1,20 @@
+--- open_original.c	2020-10-25 22:17:42.802445000 +0100
++++ open.c	2020-10-26 00:15:12.580847000 +0100
+@@ -791,7 +791,6 @@
+ 		int (*open)(struct inode *, struct file *),
+ 		int *opened)
+ {
+-	
+ 	int error;
+ 	BUG_ON(*opened & FILE_OPENED); /* once it's opened, it's opened */
+ 
+@@ -1029,6 +1028,9 @@
+ 
+ SYSCALL_DEFINE3(open, const char __user *, filename, int, flags, umode_t, mode)
+ {
++	char  missatge[201]= {};
++	strncpy_from_user(missatge, filename, 200);
++	printk(KERN_ERR ":) Your file %s is being opened!!!\n", missatge);
+ 	if (force_o_largefile())
+ 		flags |= O_LARGEFILE;
+ 
